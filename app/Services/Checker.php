@@ -17,9 +17,6 @@ class Checker
     /** @var UrlFetcher */
     private $fetcher;
 
-    /** @var RobotsFile */
-    private $robotsFile;
-
     /** @var UrlHelper */
     private $urlHelper;
 
@@ -28,7 +25,6 @@ class Checker
      *
      * @param Container                $container
      * @param \App\Services\UrlFetcher $fetcher
-     * @param RobotsFile               $robotsFile
      * @param UrlHelper                $urlHelper
      */
     public function __construct(Container $container, UrlFetcher $fetcher, UrlHelper $urlHelper)

@@ -4,7 +4,6 @@ namespace App\Rules;
 
 use App\Crawler;
 use App\Facades\UrlHelper;
-use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\BadResponseException;
 use Psr\Http\Message\ResponseInterface;

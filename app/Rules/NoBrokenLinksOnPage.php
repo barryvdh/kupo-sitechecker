@@ -3,7 +3,6 @@
 namespace App\Rules;
 
 use App\Crawler;
-use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Pool;
@@ -28,7 +27,6 @@ class NoBrokenLinksOnPage extends Rule
     public function __construct(ClientInterface $client)
     {
         $this->client = $client;
-        logger($client->getConfig('headers'));
     }
 
     /**
