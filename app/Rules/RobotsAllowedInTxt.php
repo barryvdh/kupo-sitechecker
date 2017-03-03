@@ -14,7 +14,7 @@ class RobotsAllowedInTxt extends Rule
      */
     public function check(Crawler $crawler, ResponseInterface $response, UriInterface $uri)
     {
-        if (!$content = RobotsFile::getContent()) {
+        if (!$content = RobotsFile::setUrl($uri)->getContent()) {
             return true;
         }
 

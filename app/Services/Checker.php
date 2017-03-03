@@ -31,11 +31,10 @@ class Checker
      * @param RobotsFile               $robotsFile
      * @param UrlHelper                $urlHelper
      */
-    public function __construct(Container $container, UrlFetcher $fetcher, RobotsFile $robotsFile, UrlHelper $urlHelper)
+    public function __construct(Container $container, UrlFetcher $fetcher, UrlHelper $urlHelper)
     {
         $this->container = $container;
         $this->fetcher = $fetcher;
-        $this->robotsFile = $robotsFile;
         $this->urlHelper = $urlHelper;
     }
 
@@ -53,8 +52,6 @@ class Checker
         $uri = new Uri($url);
 
         $response = $this->fetcher->fetch($uri);
-
-        $this->robotsFile->setUrl($this->urlHelper->getRobotsUrl($uri));
 
         $crawler = new Crawler($response, $uri);
 

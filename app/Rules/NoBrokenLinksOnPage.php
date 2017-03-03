@@ -4,6 +4,7 @@ namespace App\Rules;
 
 use App\Crawler;
 use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Pool;
 use GuzzleHttp\Psr7\Request;
@@ -16,17 +17,18 @@ class NoBrokenLinksOnPage extends Rule
 
     protected $msg;
 
-    /** @var Client */
+    /** @var ClientInterface */
     protected $client;
 
     /**
      * Check for broken links on the page.
      *
-     * @param Client $client
+     * @param ClientInterface $client
      */
-    public function __construct(Client $client)
+    public function __construct(ClientInterface $client)
     {
         $this->client = $client;
+        logger($client->getConfig('headers'));
     }
 
     /**

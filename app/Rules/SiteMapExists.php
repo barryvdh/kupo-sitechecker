@@ -19,7 +19,7 @@ class SiteMapExists extends Rule
     public function check(Crawler $crawler, ResponseInterface $response, UriInterface $uri)
     {
         /** @var \RobotsTxtParser $parser */
-        $parser = RobotsFile::getParser();
+        $parser = RobotsFile::setUrl($uri)->getParser();
         if (!$maps = $parser->getSitemaps()) {
             $maps = [UrlHelper::getDefaultSiteMapUrl((string) $uri)];
         }

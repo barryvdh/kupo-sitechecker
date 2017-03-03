@@ -5,6 +5,7 @@ namespace App\Rules;
 use App\Crawler;
 use App\Facades\UrlHelper;
 use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\BadResponseException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\UriInterface;
@@ -13,15 +14,15 @@ class PageNotFoundGives404 extends Rule
 {
     protected $statusCode;
 
-    /** @var Client */
+    /** @var ClientInterface */
     protected $client;
 
     /**
      * Check if Not Found pages return a correct 404 Status Code.
      *
-     * @param Client $client
+     * @param ClientInterface $client
      */
-    public function __construct(Client $client)
+    public function __construct(ClientInterface $client)
     {
         $this->client = $client;
     }

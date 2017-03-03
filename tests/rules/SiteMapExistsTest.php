@@ -17,6 +17,8 @@ class SiteMapExistsTest extends BrowserKitTestCase
         ]);
 
         $rule = new SiteMapExists();
+        RobotsFile::shouldReceive('setUrl')
+            ->andReturnSelf();
         RobotsFile::shouldReceive('getParser')
             ->once()
             ->andReturn($parser);
@@ -44,6 +46,8 @@ class SiteMapExistsTest extends BrowserKitTestCase
         ]);
 
         $rule = new SiteMapExists();
+        RobotsFile::shouldReceive('setUrl')
+            ->andReturnSelf();
         RobotsFile::shouldReceive('getParser')
             ->once()
             ->andReturn($parser);

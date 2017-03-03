@@ -3,13 +3,14 @@
 namespace App\Services;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ClientException;
 use RobotsTxtParser;
 
 class RobotsFile
 {
     /**
-     * @var Client
+     * @var ClientInterface
      */
     private $client;
 
@@ -30,7 +31,7 @@ class RobotsFile
      */
     private $parser;
 
-    public function __construct(Client $client = null)
+    public function __construct(ClientInterface $client = null)
     {
         $this->setClient($client ?: new Client());
     }
@@ -52,7 +53,7 @@ class RobotsFile
     }
 
     /**
-     * @return Client
+     * @return ClientInterface
      */
     public function getClient()
     {
@@ -60,9 +61,9 @@ class RobotsFile
     }
 
     /**
-     * @param Client $client
+     * @param ClientInterface $client
      */
-    public function setClient(Client $client)
+    public function setClient(ClientInterface $client)
     {
         $this->client = $client;
     }
@@ -74,6 +75,12 @@ class RobotsFile
      */
     public function setUrl($url)
     {
+        $url = (string) $url;
+
+        if ($url !== $this->url) {
+            $this->content = null;
+        }
+
         $this->url = $url;
 
         return $this;

@@ -3,16 +3,17 @@
 namespace App\Services;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
 use Psr\Http\Message\ResponseInterface;
 
 class UrlFetcher
 {
     /**
-     * @var Client
+     * @var ClientInterface
      */
     private $client;
 
-    public function __construct(Client $client = null)
+    public function __construct(ClientInterface $client = null)
     {
         $this->setClient($client ?: new Client());
     }
@@ -34,9 +35,9 @@ class UrlFetcher
     /**
      * Set the HTTP Client.
      *
-     * @param Client $client
+     * @param ClientInterface $client
      */
-    public function setClient(Client $client)
+    public function setClient(ClientInterface $client)
     {
         $this->client = $client;
     }
