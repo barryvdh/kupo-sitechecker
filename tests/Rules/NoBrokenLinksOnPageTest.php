@@ -24,7 +24,7 @@ class NoBrokenLinksOnPageTest extends TestCase
         $this->urlHelper = Mockery::mock(UrlHelper::class);
     }
 
-    public function provideCheckData(): array
+    public static function provideCheckData(): array
     {
         return [[[200, 200], true], [[302, 200], true], [[200, 404, 404], false]];
     }

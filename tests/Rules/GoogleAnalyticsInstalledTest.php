@@ -9,7 +9,7 @@ class GoogleAnalyticsInstalledTest extends TestCase
 {
     use RuleTestTrait;
 
-    public function provideCheckData(): array
+    public static function provideCheckData(): array
     {
         return [
             ['GoogleAnalyticsInstalledPassed', true, 'UA-12345678-9'],

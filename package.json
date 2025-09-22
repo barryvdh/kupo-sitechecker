@@ -1,31 +1,22 @@
 {
-  "license": "MIT",
-  "scripts": {
-    "lint": "eslint resources/assets/js --ext=js,vue",
-    "dev": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "watch": "yarn dev --watch",
-    "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "build": "yarn lint && cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "postinstall": "yarn build"
-  },
-  "eslintConfig": {
-    "extends": "vue",
-    "rules": {
-      "no-multi-str": "off"
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "build": "vite build",
+        "dev": "vite"
+    },
+    "dependencies": {
+        "@tailwindcss/vite": "^4.1.11",
+        "autoprefixer": "^10.4.20",
+        "axios": "^1.7.4",
+        "concurrently": "^9.0.1",
+        "laravel-vite-plugin": "^2.0",
+        "tailwindcss": "^4.0.7",
+        "vite": "^7.0.4"
+    },
+    "optionalDependencies": {
+        "@rollup/rollup-linux-x64-gnu": "4.9.5",
+        "@tailwindcss/oxide-linux-x64-gnu": "^4.0.1",
+        "lightningcss-linux-x64-gnu": "^1.29.1"
     }
-  },
-  "devDependencies": {
-    "axios": "^0.18.1",
-    "cross-env": "^3.1.4",
-    "eslint": "^4.18.2",
-    "eslint-config-vue": "^2.0.1",
-    "eslint-plugin-vue": "^1.0.0",
-    "laravel-mix": "^0.8.1",
-    "lodash": "^4.17.13",
-    "node-sass": "^4.11.0",
-    "sass-loader": "^7.1.0",
-    "slugify": "^1.0.2",
-    "vue": "^2.0.1"
-  },
-  "dependencies": {}
 }

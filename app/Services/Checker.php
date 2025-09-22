@@ -8,7 +8,7 @@ use App\Rules\RuleInterface;
 use Exception;
 use GuzzleHttp\Psr7\Uri;
 use Illuminate\Contracts\Container\Container;
-use Illuminate\Contracts\Logging\Log;
+use Psr\Log\LoggerInterface;
 
 class Checker
 {
@@ -23,7 +23,7 @@ class Checker
         UrlFetcher $fetcher,
         UrlHelper $urlHelper,
         Markdown $markdown,
-        Log $logger
+        LoggerInterface $logger
     ) {
         $this->container = $container;
         $this->fetcher = $fetcher;

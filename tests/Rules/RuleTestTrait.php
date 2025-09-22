@@ -7,7 +7,7 @@ use App\Rules\RuleInterface;
 use App\Services\Markdown;
 use App\Services\UrlHelper;
 use GuzzleHttp\Client;
-use function GuzzleHttp\Psr7\parse_response;
+use GuzzleHttp\Psr7\Message;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Psr7\Uri;
 use Mockery;
@@ -44,7 +44,7 @@ trait RuleTestTrait
      */
     public function createArgumentsFromBlob(string $name): array
     {
-        if (!ends_with($name, '.html')) {
+        if (!str_ends_with($name, '.html')) {
             $name = "$name.html";
         }
 
@@ -62,11 +62,11 @@ trait RuleTestTrait
      */
     public function createArgumentsFromMessage(string $name): array
     {
-        if (!ends_with($name, '.txt')) {
+        if (!str_ends_with($name, '.txt')) {
             $name = "$name.txt";
         }
 
-        $response = parse_response(file_get_contents(__DIR__."/../messages/$name"));
+        $response = Message::parseResponse(file_get_contents(__DIR__."/../messages/$name"));
 
         $uri = new Uri('http://foo.bar/'.$name);
         $crawler = new Crawler($response, $uri);

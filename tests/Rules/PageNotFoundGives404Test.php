@@ -24,7 +24,7 @@ class PageNotFoundGives404Test extends TestCase
         $this->urlHelper = Mockery::mock(UrlHelper::class);
     }
 
-    public function provideCheckData(): array
+    public static function provideCheckData(): array
     {
         return [[404, true], [500, false]];
     }

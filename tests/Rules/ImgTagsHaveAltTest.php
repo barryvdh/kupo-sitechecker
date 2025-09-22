@@ -9,7 +9,7 @@ class ImgTagsHaveAltTest extends TestCase
 {
     use RuleTestTrait;
 
-    public function provideCheckData(): array
+    public static function provideCheckData(): array
     {
         return [['ImgTagsHaveAltPassed', true], ['ImgTagsHaveAltFailed', false]];
     }

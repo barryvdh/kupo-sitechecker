@@ -9,7 +9,7 @@ class AppIconsExistTest extends TestCase
 {
     use RuleTestTrait;
 
-    public function provideCheckData(): array
+    public static function provideCheckData(): array
     {
         return [['AppIconsExistPassed', true], ['AppIconsExistFailed', false]];
     }

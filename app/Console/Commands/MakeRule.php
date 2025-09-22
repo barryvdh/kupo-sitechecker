@@ -32,7 +32,7 @@ class MakeRule extends GeneratorCommand
      */
     protected function getStub(): string
     {
-        return __DIR__.'/../stubs/rule.stub';
+        return resource_path('/stubs/rule.stub');
     }
 
     /**

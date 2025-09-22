@@ -7,6 +7,7 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Pool;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Http\Request as IlluminateRequest;
+use Illuminate\Support\Str;
 use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\UriInterface;
@@ -86,8 +87,8 @@ class NoBrokenLinksOnPage extends Rule
         $promise->wait();
 
         $this->resultMessage = $fail
-            ? 'Found **'.count($fail).'** broken '.str_plural('link', count($fail)).':'.PHP_EOL.PHP_EOL.implode(PHP_EOL, $fail)
-            : "All $ok ".str_plural('link', $ok).' on the page are working.';
+            ? 'Found **'.count($fail).'** broken '.Str::plural('link', count($fail)).':'.PHP_EOL.PHP_EOL.implode(PHP_EOL, $fail)
+            : "All $ok ".Str::plural('link', $ok).' on the page are working.';
 
         return !$fail;
     }

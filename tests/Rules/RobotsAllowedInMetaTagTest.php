@@ -9,7 +9,7 @@ class RobotsAllowedInMetaTagTest extends TestCase
 {
     use RuleTestTrait;
 
-    public function provideCheckData(): array
+    public static function provideCheckData(): array
     {
         return [['RobotsAllowedInMetaTagPassed', true], ['RobotsAllowedInMetaTagFailed', false]];
     }

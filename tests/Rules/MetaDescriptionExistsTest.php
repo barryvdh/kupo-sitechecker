@@ -9,7 +9,7 @@ class MetaDescriptionExistsTest extends TestCase
 {
     use RuleTestTrait;
 
-    public function provideCheckData(): array
+    public static function provideCheckData(): array
     {
         return [
             ['MetaDescriptionExistsPassed', true, 'A foo walks into a bar.'],

@@ -70,7 +70,7 @@ class UrlHelper
     {
         $parts = parse_url($url);
 
-        if (starts_with(strtolower($parts['host']), 'www.')) {
+        if (str_starts_with(strtolower($parts['host']), 'www.')) {
             return preg_replace('/www\./i', '', $url, 1);
         }
 
@@ -114,13 +114,13 @@ class UrlHelper
             return $url; // the url is already absolute
         }
 
-        if (starts_with($url, '//')) {
+        if (str_starts_with($url, '//')) {
             // protocol-less url
             // We'll use the $checkedUrl's protocol.
             return parse_url($baseUrl)['scheme'].':'.$url;
         }
 
-        if (starts_with($url, '/')) {
+        if (str_starts_with($url, '/')) {
             // absolute URL
             return $this->getRootUrl($baseUrl).substr($url, 1);
         }

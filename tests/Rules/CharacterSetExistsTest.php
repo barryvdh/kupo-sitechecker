@@ -9,7 +9,7 @@ class CharacterSetExistsTest extends TestCase
 {
     use RuleTestTrait;
 
-    public function provideCheckData(): array
+    public static function provideCheckData(): array
     {
         return [
             ['CharacterSetExistsPassed_HTML5', true, 'UTF-8'],

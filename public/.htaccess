@@ -1,76 +1,25 @@
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
-        Options -MultiViews
+        Options -MultiViews -Indexes
     </IfModule>
 
     RewriteEngine On
 
-    # Redirect Trailing Slashes If Not A Folder...
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(.*)/$ /$1 [L,R=301]
-
-    # Handle Front Controller...
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^ index.php [L]
-
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-</IfModule>
 
-<IfModule mod_deflate.c>
+    # Handle X-XSRF-Token Header
+    RewriteCond %{HTTP:x-xsrf-token} .
+    RewriteRule .* - [E=HTTP_X_XSRF_TOKEN:%{HTTP:X-XSRF-Token}]
 
-  # ----------------------------------------------------------------------
-  # Gzip compression.
-  # Stolen from https://github.com/h5bp/server-configs-apache/
-  # ----------------------------------------------------------------------
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
 
-  # Force compression for mangled `Accept-Encoding` request headers
-  # https://developer.yahoo.com/blogs/ydn/pushing-beyond-gzipping-25601.html
-
-  <IfModule mod_setenvif.c>
-    <IfModule mod_headers.c>
-      SetEnvIfNoCase ^(Accept-EncodXng|X-cept-Encoding|X{15}|~{15}|-{15})$ ^((gzip|deflate)\s*,?\s*)+|[X~-]{4,13}$ HAVE_Accept-Encoding
-      RequestHeader append Accept-Encoding "gzip,deflate" env=HAVE_Accept-Encoding
-    </IfModule>
-  </IfModule>
-
-  # Compress all output labeled with one of the following MIME-types
-  <IfModule mod_filter.c>
-      AddOutputFilterByType DEFLATE "application/atom+xml" \
-                                    "application/javascript" \
-                                    "application/json" \
-                                    "application/ld+json" \
-                                    "application/manifest+json" \
-                                    "application/rdf+xml" \
-                                    "application/rss+xml" \
-                                    "application/schema+json" \
-                                    "application/vnd.geo+json" \
-                                    "application/vnd.ms-fontobject" \
-                                    "application/x-font-ttf" \
-                                    "application/x-javascript" \
-                                    "application/x-web-app-manifest+json" \
-                                    "application/xhtml+xml" \
-                                    "application/xml" \
-                                    "font/eot" \
-                                    "font/opentype" \
-                                    "image/bmp" \
-                                    "image/svg+xml" \
-                                    "image/vnd.microsoft.icon" \
-                                    "image/x-icon" \
-                                    "text/cache-manifest" \
-                                    "text/css" \
-                                    "text/html" \
-                                    "text/javascript" \
-                                    "text/plain" \
-                                    "text/vcard" \
-                                    "text/vnd.rim.location.xloc" \
-                                    "text/vtt" \
-                                    "text/x-component" \
-                                    "text/x-cross-domain-policy" \
-                                    "text/xml"
-
-  </IfModule>
-
+    # Send Requests To Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
 </IfModule>

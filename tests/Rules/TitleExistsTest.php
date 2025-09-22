@@ -9,7 +9,7 @@ class TitleExistsTest extends TestCase
 {
     use RuleTestTrait;
 
-    public function provideCheckData(): array
+    public static function provideCheckData(): array
     {
         return [['TitleExistsPassed', true, 'Foo'], ['TitleExistsFailed', false, null]];
     }

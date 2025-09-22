@@ -1,8 +1,7 @@
-# kupo [![Build Status](https://travis-ci.org/phanan/kupo.svg?branch=master)](https://travis-ci.org/phanan/kupo)
+# kupo site checker
 
 > A simple site launch checklist checker (for the lack of a better name).
 
-<img src="https://github.com/phanan/kupo/raw/master/screen.gif" width="488" height="auto" alt="Screen record">
 
 ## Why
 
@@ -25,13 +24,13 @@ After (or is it before?) launching a new site, you often want to validate it aga
 
 ## Install
 
-As this tool is built on top of [Vue](https://vuejs.org) and [Laravel](https://laravel.com), your environment must meet their requirements. You'll also need a decent Node version (mine is `v9.11.2`) and [yarn](https://yarnpkg.com/lang/en/). Now from your command line, execute this bunch of commands:
+As this tool is built on top of [Livewire](https://livewire.laravel.com/https://vuejs.org) and [Laravel](https://laravel.com), your environment must meet their requirements. You'll also need a decent Node version (mine is `v20`). Now from your command line, execute this bunch of commands:
 
 ```bash
-git clone https://github.com/phanan/kupo.git
-cd kupo
+git clone https://github.com/barryvdh/kupo-sitechecker.git
+cd kupo-sitechecker
 composer install
-php artisan kupo:init
+npm install && npm run build
 php artisan serve
 // kupo should now have been started at http://localhost:8000/
 ```

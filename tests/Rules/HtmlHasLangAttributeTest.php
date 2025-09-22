@@ -9,7 +9,7 @@ class HtmlHasLangAttributeTest extends TestCase
 {
     use RuleTestTrait;
 
-    public function provideCheckData(): array
+    public static function provideCheckData(): array
     {
         return [['HtmlHasLangAttributePassed', true, 'vi'], ['HtmlHasLangAttributeFailed', false, null]];
     }
